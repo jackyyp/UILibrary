@@ -50,6 +50,7 @@ export function CalendarDateRangePicker({ className }) {
 	const form = useForm(date);
 
 	const { toast } = useToast();
+
 	//2. Def handler
 	const onSubmit = () => {
 		toast({

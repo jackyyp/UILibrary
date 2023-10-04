@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Metadata } from "next";
 
@@ -19,10 +21,8 @@ import TeamSwitcher from "@/app/dashboard/comps/team-switcher";
 import { UserNav } from "@/app/dashboard/comps/user-nav";
 import { DarkMode } from "@/app/dashboard/comps/dark-mode";
 import { Notification } from "./comps/notification";
-
-export const metadata = {
-	title: "Dashboard eg",
-};
+import { Fragment } from "react";
+import { motion } from "framer-motion";
 
 export default function DashboardPage() {
 	return (
@@ -44,7 +44,7 @@ export default function DashboardPage() {
 				<div className="flex-1 space-y-4 p-8 pt-6">
 					<div className="flex items-center justify-between space-y-2">
 						<h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-						<div className="flex items-center space-x-2">
+						<div key="flex flex-row space-x-2">
 							<CalendarDateRangePicker />
 							<Notification />
 						</div>
@@ -169,7 +169,17 @@ export default function DashboardPage() {
 							<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
 								<Card className="col-span-4">
 									<CardHeader>
-										<CardTitle>Overview</CardTitle>
+										{/* fade in effect using framer-motion */}
+										<motion.div
+											initial={{ opacity: 0 }}
+											animate={{ opacity: 1 }}
+											transition={{
+												ease: "easeOut",
+												duration: 0.5,
+											}}
+										>
+											<CardTitle>Overview</CardTitle>
+										</motion.div>
 									</CardHeader>
 									<CardContent className="pl-2">
 										<Overview />
@@ -177,10 +187,19 @@ export default function DashboardPage() {
 								</Card>
 								<Card className="col-span-3">
 									<CardHeader>
-										<CardTitle>Recent Sales</CardTitle>
-										<CardDescription>
-											You made 265 sales this month.
-										</CardDescription>
+										<motion.div
+											initial={{ opacity: 0 }}
+											animate={{ opacity: 1 }}
+											transition={{
+												ease: "easeOut",
+												duration: 0.5,
+											}}
+										>
+											<CardTitle>Recent Sales</CardTitle>
+											<CardDescription>
+												You made 265 sales this month.
+											</CardDescription>
+										</motion.div>
 									</CardHeader>
 									<CardContent>
 										<RecentSales />

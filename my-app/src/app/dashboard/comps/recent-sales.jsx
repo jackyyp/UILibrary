@@ -1,4 +1,17 @@
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { motion } from "framer-motion";
+
+//backend? useEffect and fetch from backend API
+
+const data = [
+	{
+		fallback: "OM",
+		name: "Olivia Martin",
+		email: "olivia.martin@email.com",
+		revenue: 1999,
+	},
+];
 
 export function RecentSales() {
 	return (
@@ -7,38 +20,55 @@ export function RecentSales() {
 
 		// spacing of 8 with along vertical ,spanning the Card
 		<div className="space-y-8">
-			{/* a row entry with flex */}
+			{data.map((user, idx) => {
+				return (
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{
+							ease: "easeOut",
+							duration: 0.5,
+						}}
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+					>
+						<div className="flex items-center">
+							{/* size of avatar  */}
+							<Avatar className="h-9 w-9">
+								<AvatarImage src="/avatars/01.png" alt="Avatar" />
+								<AvatarFallback>{user.fallback}</AvatarFallback>
+							</Avatar>
+
+							<div className="ml-4 space-y-1">
+								<p className="text-sm font-medium leading-none">{user.name}</p>
+								<p className="text-sm text-muted-foreground">{user.email}</p>
+							</div>
+
+							{/* push to left in flex using  ml-auto */}
+							<div className="ml-auto font-medium">${user.revenue}</div>
+						</div>
+					</motion.div>
+				);
+			})}
+		</div>
+	);
+
+	{
+		/* **just repeating diff. data, we can replace with data.map() ** */
+	}
+	{
+		/* 
 			<div className="flex items-center">
-				{/* size of avatar  */}
-				<Avatar className="h-9 w-9">
-					<AvatarImage src="/avatars/01.png" alt="Avatar" />
-					<AvatarFallback>OM</AvatarFallback>
-				</Avatar>
-
-				<div className="ml-4 space-y-1">
-					<p className="text-sm font-medium leading-none">Olivia Martin</p>
-					<p className="text-sm text-muted-foreground">
-						olivia.martin@email.com
-					</p>
-				</div>
-
-				{/* push to left in flex using  ml-auto */}
-				<div className="ml-auto font-medium">+$1,999.00</div>
-			</div>
-
-			{/* **just repeating diff. data, we can replace with data.map() ** */}
-			{/* 
-			<div className="flex items-center">
-				<Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
-					<AvatarImage src="/avatars/02.png" alt="Avatar" />
+			<Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
+			<AvatarImage src="/avatars/02.png" alt="Avatar" />
 					<AvatarFallback>JL</AvatarFallback>
 				</Avatar>
 				<div className="ml-4 space-y-1">
 					<p className="text-sm font-medium leading-none">Jackson Lee</p>
 					<p className="text-sm text-muted-foreground">jackson.lee@email.com</p>
-				</div>
-				<div className="ml-auto font-medium">+$39.00</div>
-			</div>
+					</div>
+					<div className="ml-auto font-medium">+$39.00</div>
+					</div>
 
 			<div className="flex items-center">
 				<Avatar className="h-9 w-9">
@@ -76,7 +106,6 @@ export function RecentSales() {
 					<p className="text-sm text-muted-foreground">sofia.davis@email.com</p>
 				</div>
 				<div className="ml-auto font-medium">+$39.00</div>
-			</div> */}
-		</div>
-	);
+			</div> */
+	}
 }

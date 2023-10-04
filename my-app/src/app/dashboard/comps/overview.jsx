@@ -1,9 +1,19 @@
 "use client";
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-
+import {
+	Bar,
+	Cell,
+	BarChart,
+	ResponsiveContainer,
+	XAxis,
+	YAxis,
+} from "recharts";
+import { useToast } from "@/components/ui/use-toast";
+import { useCallback, useEffect, useState } from "react";
 //mockup data, should be json from backend.
 //not limited to bar chart. Checkout:  https://recharts.org/en-US/examples
+
+// data from backend.
 const data = [
 	{
 		name: "Jan",
@@ -56,6 +66,17 @@ const data = [
 ];
 
 export function Overview() {
+	// this is a rechart component, contained in a shadcn Card.
+	const { toast } = useToast();
+	const [activeIndex, setActiveIndex] = useState(-1);
+
+	const handleClick = (entry, index) => {
+		setActiveIndex(index);
+		toast({
+			description: `For ${data[index].name}: $${data[index].total}`,
+		});
+	};
+
 	return (
 		<ResponsiveContainer width="100%" height={350}>
 			<BarChart data={data}>
@@ -73,7 +94,17 @@ export function Overview() {
 					axisLine={false}
 					tickFormatter={(value) => `$${value}`}
 				/>
-				<Bar dataKey="total" fill="#adfa1d" radius={[4, 4, 0, 0]} />
+
+				<Bar dataKey="total" onClick={handleClick}>
+					{data.map((item, index) => (
+						<Cell
+							key={`cell-${index}`}
+							fill={index === activeIndex ? "#82ca9d" : "#8884d8"}
+							radius={[4, 4, 0, 0]}
+							cursor="pointer"
+						/>
+					))}
+				</Bar>
 			</BarChart>
 		</ResponsiveContainer>
 	);
