@@ -59,7 +59,9 @@ npx shadcn-ui@latest add  [component-name]
 ### Backend
 
 While exploring shadcn/ui,
-I wrote a backend API using nextjs and mongoose. You may try it out as well using your own MongoDB Atlas
+I wrote a backend API using nextjs and mongoose. You may try it out as well using your own MongoDB Atlas.
+
+please change db path in lib/mongodb/db.js, and add DB_PASS by creating a new .env.local
 
 I assume its more or less writing API to db?
 
