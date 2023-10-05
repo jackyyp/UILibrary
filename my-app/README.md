@@ -2,12 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## About
 
-Basically just exploring how [shadcn/ui]("https://ui.shadcn.com/docs") can save some time for frontend with React (w/ customizable components).
+Basically just exploring how [shadcn/ui](https://ui.shadcn.com/docs) can save some time for frontend with React (w/ customizable components).
 It includes some common components like
 
 - navbar, sidebar , card, type-safe form (have to use TypeScript)
 
-Also, the use of [framer-motion]("https://www.framer.com/motion/") library to add some animation.
+Also, the use of [framer-motion](https://www.framer.com/motion/) library to add some animation.
 
 Finally, how frontend can interact with backend
 
@@ -45,7 +45,7 @@ checkout 'layout.js' for more
 
 just treat Next like React
 
-shadcn/ui CLI should be setup already , if not , checkout [here]("https://ui.shadcn.com/docs/installation/next")
+shadcn/ui CLI should be setup already , if not , checkout [here](https://ui.shadcn.com/docs/installation/next)
 to add a component from shadcn/ui, run this command
 
 ```bash
@@ -53,8 +53,8 @@ npx shadcn-ui@latest add  [component-name]
 ```
 
 - [Next.js Documentation](https://nextjs.org/docs) - Next.js features and API.
-- [shadcn/ui UI List]("https://ui.shadcn.com/docs") - Shadcn/ui UI library and implementation.
-- [framer-motion]("https://www.framer.com/motion/") - Adding ready-to-use animation on top of the UI.
+- [shadcn/ui UI List](https://ui.shadcn.com/docs) - Shadcn/ui UI library and implementation.
+- [framer-motion](https://www.framer.com/motion/) - Adding ready-to-use animation on top of the UI.
 
 ### Backend
 
